@@ -36,13 +36,25 @@ git命令的学习
    
 4. git checkout
    
-   可以将工作区文件的修改回撤。
+   可以将工作区文件的修改回撤;切换分支
    
    ``` shell
    git checkout -- <file>
    ```
    
    把工作区的文件file之前的修改回撤。
+   
+   ``` shell
+   git checkout dev
+   ```
+   
+   从当前工作分支切换到分支dev
+   
+   ``` 
+   git checkout -b dev
+   ```
+   
+   新建分支dev，并切换到分支dev
    
 5. git status
    
@@ -84,13 +96,13 @@ git命令的学习
    git log
    ```
    
-   输出如下图![ ![git_log](git_log.png)
+   输出如下图![ ![git_log](../images/git/git_log.png)
    
    ``` shell
    git log --pretty=oneline
    ```
    
-   输出如下图![git_log_pretty](git_log_pretty.png)
+   输出如下图![git_log_pretty](../images/git/git_log_pretty.png)
    
    两种输出内容并无不同，只是在排版上第二种更易看。
    
@@ -102,7 +114,7 @@ git命令的学习
    git reflog
    ```
    
-   如下图：![git_reflog](git_reflog.png)
+   如下图：![git_reflog](../images/git/git_reflog.png)
    
 9. git rm
    
@@ -120,4 +132,40 @@ git命令的学习
     git push origin master
     ```
     
-    [​]: www.baidu.com	"下一页"
+11. git branch
+    
+    查看本地仓库的分支
+    
+    ``` shell
+    git branch
+    ```
+    
+    输出所有的本地仓库分支，前带*号的表示是当前仓库
+    
+    ``` shell
+    git branch dev
+    ```
+    
+    新建分支dev
+    
+    ``` shell
+    git branch -d dev
+    ```
+    
+    删除分支dev
+    
+12. git merge
+    
+    将指定分支合并到当前分支
+    
+    ``` shell
+    git merge dev
+    ```
+    
+    将分支dev合并到当前分支
+    
+13. 随碟附
+    
+    ``` shell
+    git push origin master
+    ```
