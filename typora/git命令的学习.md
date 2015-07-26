@@ -112,7 +112,7 @@ git命令的学习
    
    —graph参数可以看到分支合并图，如下
    
-   ![git_log_graph](../images/git/git_log_graph.png)
+    ![git_log_graph](../images/git/git_log_graph.png)
    
 8. git reflog
    
@@ -170,7 +170,13 @@ git命令的学习
     git merge dev
     ```
     
-    将分支dev合并到当前分支
+    将分支dev合并到当前分支(看不出历史记录)
+    
+    ``` shell
+    git merge --no-ff -m "日志" dev
+    ```
+    
+    将分支dev合并到当前分支，不使用fast forward模式，可以看到历史记录
     
 13. 随碟附
     
