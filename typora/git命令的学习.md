@@ -106,6 +106,14 @@ git命令的学习
    
    两种输出内容并无不同，只是在排版上第二种更易看。
    
+   ``` 
+   git log --graph
+   ```
+   
+   —graph参数可以看到分支合并图，如下
+   
+   ![git_log_graph](../images/git/git_log_graph.png)
+   
 8. git reflog
    
    显示本地仓库的提交记录
