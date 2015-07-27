@@ -50,7 +50,7 @@ git命令的学习
    
    从当前工作分支切换到分支dev
    
-   ``` 
+   ``` shell
    git checkout -b dev
    ```
    
@@ -106,7 +106,7 @@ git命令的学习
    
    两种输出内容并无不同，只是在排版上第二种更易看。
    
-   ``` 
+   ``` shell
    git log --graph
    ```
    
@@ -177,9 +177,3 @@ git命令的学习
     ```
     
     将分支dev合并到当前分支，不使用fast forward模式，可以看到历史记录
-    
-13. 随碟附
-    
-    ``` shell
-    git push origin master
-    ```
