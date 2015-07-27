@@ -1,5 +1,5 @@
-!.gitnore
-!index.html
-!params.json
-!typora
-!typora_html
+.gitnore
+index.html
+params.json
+typora/
+typora_html/
