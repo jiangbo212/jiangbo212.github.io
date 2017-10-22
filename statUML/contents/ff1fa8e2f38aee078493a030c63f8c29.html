@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>SlicedChannelBuffer</title>
+        <!-- <script src="http://use.edgefonts.net/source-sans-pro;source-code-pro.js"></script> -->
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Source+Code+Pro:300,400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../assets/css/jquery.bonsai.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/icons.css">
+<script type="text/javascript" src="../assets/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.bonsai.js"></script>
+<!-- <script type="text/javascript" src="../assets/js/main.js"></script> -->
+
+    </head>
+    <body>
+        <div>
+
+            <!-- Name Title -->
+
+            <h1>SlicedChannelBuffer</h1>
+
+            <!-- Type and Stereotype -->
+
+            <section style="margin-top: .5em;">
+                <span class="alert alert-info">
+                    <span class="node-icon _icon-UMLClass"></span>
+                    UMLClass
+                </span>
+                
+            </section>
+
+            <!-- Path -->
+
+            <section style="margin-top: 10px">
+                
+                
+                
+                    
+                    <span class="label label-info"><a href='cf9c8b720f3815adeccaf3ef6e48c6c4.html'><span class='node-icon _icon-Project'></span>Untitled</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='6550300e57d7fc770bd2e9afbcdb3ecb.html'><span class='node-icon _icon-UMLModel'></span>JavaReverse</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7ff2d96ca3eb7f62f48c1a30b3c7c990.html'><span class='node-icon _icon-UMLPackage'></span>net</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7adc4be4f2e4859086f068fc27512d85.html'><span class='node-icon _icon-UMLPackage'></span>gleamynode</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='bb15307bdbbaf31bfef4f71be74150ae.html'><span class='node-icon _icon-UMLPackage'></span>netty</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='13ebeea6c90c35d72f303d2d478d584e.html'><span class='node-icon _icon-UMLPackage'></span>buffer</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='ff1fa8e2f38aee078493a030c63f8c29.html'><span class='node-icon _icon-UMLClass'></span>SlicedChannelBuffer</a></span>
+                
+            </section>
+
+            <!-- Diagram -->
+
+            
+
+            <!-- Description -->
+
+            
+            <section>
+                <h3>Description</h3>
+                <div>
+                    
+                        <p>Copyright (C) 2008  Trustin Heuiseung Lee
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, 5th Floor, Boston, MA 02110-1301 USA
+@author The Netty Project (netty@googlegroups.com)
+@author Trustin Lee (trustin@gmail.com)
+@version $Rev$, $Date$</p>
+                    
+                </div>
+            </section>
+            
+
+            <!-- Specification -->
+
+            
+
+            <!-- Directed Relationship -->
+
+            
+
+            <!-- Undirected Relationship -->
+
+            
+
+            <!-- Classifier -->
+
+            
+                
+                
+<section class="element-list">
+    <h3>Generalized Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='681be4de7f4330124421d49868736d72.html'><span class='node-icon _icon-UMLClass'></span>AbstractChannelBuffer</a></li>
+        
+    </ul>
+</section>
+
+
+
+                
+                
+
+
+                
+                
+<section class="element-list">
+    <h3>Interfaces</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='6a995e8e6568350ec637d65dae4deac5.html'><span class='node-icon _icon-UMLInterface'></span>WrappedChannelBuffer</a></li>
+        
+    </ul>
+</section>
+
+
+
+                
+                
+
+
+                
+                
+
+            
+
+            <!-- Interface -->
+
+            
+
+            <!-- Component -->
+
+            
+
+            <!-- Node -->
+
+            
+
+            <!-- Actor -->
+
+            
+
+            <!-- Use Case -->
+
+            
+
+            <!-- Template Parameters -->
+
+            
+
+            <!-- Literals -->
+
+            
+
+            <!-- Attributes -->
+
+            
+            <section>
+                <h3>Attributes</h3>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>Visibility</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>private</td>
+                        <td><a href="540b0a941e4363c09c5e899cd5dd8eb3.html">adjustment</a></td>
+                        <td>int</td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>private</td>
+                        <td><a href="27d903d9b2f11872c600186268ca9afa.html">length</a></td>
+                        <td>int</td>
+                        <td></td>
+                    </tr>
+                    
+                </table>
+            </section>
+            
+
+            <!-- Operations -->
+
+            
+            <section>
+                <h3>Operations</h3>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>Visibility</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="c4ba719941c63635fdb26c10bdd2d4fb.html">SlicedChannelBuffer(buffer: ChannelBuffer, index: int, length: int)</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="56fb20286fc78055391b0d7240604066.html">unwrap(): ChannelBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="cf58d547520061c85afeaae1536da708.html">order(): ByteOrder</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="b59fa2d065c8f94eae054d9eab2c1be8.html">capacity(): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="beae917125172ef7afb07606892514f4.html">getByte(index: int): byte</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="e7193727658fcdd91199e24582304dfd.html">getShort(index: int): short</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="853430dd1aa2b2438e7632f529c703f7.html">getMedium(index: int): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="6bec11568239c101f3a68dc018c74117.html">getInt(index: int): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="f6c327fc7d15d91f6ef7bb4cc1ba7fdf.html">getLong(index: int): long</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="f21ec4a74b32b5c3a290ed69943ab229.html">duplicate(): ChannelBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="0a2ff71093b4f58e9c2d4f17468e7fae.html">copy(index: int, length: int): ChannelBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="0d5b6133aa2df00d772c91d9590b1e55.html">slice(index: int, length: int): ChannelBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="36d826f33e205689e1576135016be694.html">getBytes(index: int, dst: ChannelBuffer, dstIndex: int, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="6608cddb9e68410f98999813c88e25f3.html">getBytes(index: int, dst: byte, dstIndex: int, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="cb0bd07956c50203ee6e32c66ec2811f.html">getBytes(index: int, dst: ByteBuffer): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="42ab206564427e55e93b152f3a02d9da.html">setByte(index: int, value: byte): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="555ca47ae13c9a1a6cd87c8ec9810aa2.html">setShort(index: int, value: short): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="bda26644403513a0e797da63731f5f40.html">setMedium(index: int, value: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="421ad4f3f52367623503e278d5eaa30e.html">setInt(index: int, value: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="c9f5e38a19f7c2472db8ba824d2894be.html">setLong(index: int, value: long): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="5638b0198efaeae42c0cc773bca145e5.html">setBytes(index: int, src: byte, srcIndex: int, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="1b90afdfe8ec4148b011e3192aa8fa30.html">setBytes(index: int, src: ChannelBuffer, srcIndex: int, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="9a33a91bdc2d8252eeef2ea287a2bdbc.html">setBytes(index: int, src: ByteBuffer): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="e089e838fac5a2424c14956a888c338e.html">getBytes(index: int, out: OutputStream, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="0423805788cb699aa7135ba4b22079bb.html">getBytes(index: int, out: GatheringByteChannel, length: int): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="e4821a7fd18c4e6e3804ead21013c7b2.html">setBytes(index: int, in: InputStream, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="c57cf72343db74e5b269537fbeb87ef3.html">setBytes(index: int, in: ScatteringByteChannel, length: int): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="62f3934ff67dc4022e17fccb7db5e78f.html">toByteBuffer(index: int, length: int): ByteBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>private</td>
+                        <td><a href="f7fbd2fa14cce8cf2f95af5f5b75905f.html">checkIndex(index: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>private</td>
+                        <td><a href="d73df0380bcc1c0b0bfc953faf95d8c3.html">checkIndex(startIndex: int, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                </table>
+            </section>
+            
+
+            <!-- Receptions -->
+
+            
+
+            <!-- Extension Points -->
+
+            
+
+            <!-- Parameters -->
+
+            
+
+            <!-- Diagrams -->
+
+            
+            
+
+            <!-- Behavior -->
+
+            
+
+            <!-- Action -->
+
+            
+
+            <!-- Interaction -->
+
+            
+
+            <!-- CombinedFragment -->
+
+            
+
+            <!-- Activity -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State -->
+
+            
+
+            <!-- Vertex -->
+
+            
+
+            <!-- Transition -->
+
+            
+
+            <!-- Properties -->
+
+            <section>
+                <h3>Properties</h3>
+                
+                <table class="table table-striped table-bordered">
+    <tr>
+        <th width="50%">Name</th>
+        <th width="50%">Value</th>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>name</td>
+        <td>SlicedChannelBuffer</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>stereotype</td>
+        <td><span class='label label-info'>null</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>visibility</td>
+        <td>public</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>isAbstract</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isFinalSpecialization</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isLeaf</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isActive</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+</table>                
+
+            </section>
+
+            <!-- Tags -->
+
+            
+
+            <!-- Constraints, Dependencies, Dependants -->
+
+            
+                
+                
+
+
+                
+                
+<section class="element-list">
+    <h3>Dependencies</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='6a995e8e6568350ec637d65dae4deac5.html'><span class='node-icon _icon-UMLInterface'></span>WrappedChannelBuffer</a></li>
+        
+    </ul>
+</section>
+
+
+
+                
+                
+
+            
+
+            <!-- Relationships -->
+
+            
+            
+<section class="element-list">
+    <h3>Relationships</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='2be2fbca1eba6ba2a6091d0a57f33581.html'><span class='node-icon _icon-UMLGeneralization'></span>(SlicedChannelBuffer→AbstractChannelBuffer)</a></li>
+        
+        <li><a href='26aecc74e0fb564aa1705f5d9df4271f.html'><span class='node-icon _icon-UMLInterfaceRealization'></span>(SlicedChannelBuffer→WrappedChannelBuffer)</a></li>
+        
+        <li><a href='ac34c316e80dccfc8456e8df527910f7.html'><span class='node-icon _icon-UMLAssociation'></span>(SlicedChannelBuffer—ChannelBuffer)</a></li>
+        
+    </ul>
+</section>
+
+
+
+            <!-- Owned Elements -->
+
+            
+            
+<section class="element-list">
+    <h3>Owned Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='2be2fbca1eba6ba2a6091d0a57f33581.html'><span class='node-icon _icon-UMLGeneralization'></span>(SlicedChannelBuffer→AbstractChannelBuffer)</a></li>
+        
+        <li><a href='26aecc74e0fb564aa1705f5d9df4271f.html'><span class='node-icon _icon-UMLInterfaceRealization'></span>(SlicedChannelBuffer→WrappedChannelBuffer)</a></li>
+        
+        <li><a href='ac34c316e80dccfc8456e8df527910f7.html'><span class='node-icon _icon-UMLAssociation'></span>(SlicedChannelBuffer—ChannelBuffer)</a></li>
+        
+    </ul>
+</section>
+
+
+
+        </div>
+    </body>
+</html>

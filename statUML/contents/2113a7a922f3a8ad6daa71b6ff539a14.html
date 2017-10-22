@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>NioSocketChannel</title>
+        <!-- <script src="http://use.edgefonts.net/source-sans-pro;source-code-pro.js"></script> -->
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Source+Code+Pro:300,400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../assets/css/jquery.bonsai.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/icons.css">
+<script type="text/javascript" src="../assets/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.bonsai.js"></script>
+<!-- <script type="text/javascript" src="../assets/js/main.js"></script> -->
+
+    </head>
+    <body>
+        <div>
+
+            <!-- Name Title -->
+
+            <h1>NioSocketChannel</h1>
+
+            <!-- Type and Stereotype -->
+
+            <section style="margin-top: .5em;">
+                <span class="alert alert-info">
+                    <span class="node-icon _icon-UMLClass"></span>
+                    UMLClass
+                </span>
+                
+            </section>
+
+            <!-- Path -->
+
+            <section style="margin-top: 10px">
+                
+                
+                
+                    
+                    <span class="label label-info"><a href='cf9c8b720f3815adeccaf3ef6e48c6c4.html'><span class='node-icon _icon-Project'></span>Untitled</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='6550300e57d7fc770bd2e9afbcdb3ecb.html'><span class='node-icon _icon-UMLModel'></span>JavaReverse</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7ff2d96ca3eb7f62f48c1a30b3c7c990.html'><span class='node-icon _icon-UMLPackage'></span>net</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7adc4be4f2e4859086f068fc27512d85.html'><span class='node-icon _icon-UMLPackage'></span>gleamynode</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='bb15307bdbbaf31bfef4f71be74150ae.html'><span class='node-icon _icon-UMLPackage'></span>netty</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='392fd228dddcffe2ef252f5663cf31a7.html'><span class='node-icon _icon-UMLPackage'></span>channel</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7ca7d671913790d47415eb9f8fa0fb0e.html'><span class='node-icon _icon-UMLPackage'></span>socket</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='d4743f8a9b4c707304ea22a7a918569f.html'><span class='node-icon _icon-UMLPackage'></span>nio</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='2113a7a922f3a8ad6daa71b6ff539a14.html'><span class='node-icon _icon-UMLClass'></span>NioSocketChannel</a></span>
+                
+            </section>
+
+            <!-- Diagram -->
+
+            
+
+            <!-- Description -->
+
+            
+            <section>
+                <h3>Description</h3>
+                <div>
+                    
+                        <p>Copyright (C) 2008  Trustin Heuiseung Lee
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, 5th Floor, Boston, MA 02110-1301 USA
+Old blocking I/O based socket channel API implementation - recommended for
+small number of connections (&amp;lt; 1000).
+Copyright (C) 2008  Trustin Heuiseung Lee
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, 5th Floor, Boston, MA 02110-1301 USA
+@author The Netty Project (netty@googlegroups.com)
+@author Trustin Lee (trustin@gmail.com)
+@version $Rev$, $Date$</p>
+                    
+                </div>
+            </section>
+            
+
+            <!-- Specification -->
+
+            
+
+            <!-- Directed Relationship -->
+
+            
+
+            <!-- Undirected Relationship -->
+
+            
+
+            <!-- Classifier -->
+
+            
+                
+                
+<section class="element-list">
+    <h3>Generalized Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='0e084278b8cb0c2361eaa2f38dab6fa9.html'><span class='node-icon _icon-UMLClass'></span>AbstractChannel</a></li>
+        
+    </ul>
+</section>
+
+
+
+                
+                
+<section class="element-list">
+    <h3>Specialized Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='d736cd40e71eb03a82a670fbdc4a2c9b.html'><span class='node-icon _icon-UMLClass'></span>NioAcceptedSocketChannel</a></li>
+        
+        <li><a href='1790d72446c58736a5d6032554089f90.html'><span class='node-icon _icon-UMLClass'></span>NioClientSocketChannel</a></li>
+        
+    </ul>
+</section>
+
+
+
+                
+                
+<section class="element-list">
+    <h3>Interfaces</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='8464b5242ff591aea6851f84ed79d9d1.html'><span class='node-icon _icon-UMLInterface'></span>SocketChannel</a></li>
+        
+    </ul>
+</section>
+
+
+
+                
+                
+
+
+                
+                
+
+            
+
+            <!-- Interface -->
+
+            
+
+            <!-- Component -->
+
+            
+
+            <!-- Node -->
+
+            
+
+            <!-- Actor -->
+
+            
+
+            <!-- Use Case -->
+
+            
+
+            <!-- Template Parameters -->
+
+            
+
+            <!-- Literals -->
+
+            
+
+            <!-- Attributes -->
+
+            
+            <section>
+                <h3>Attributes</h3>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>Visibility</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="337e547624ec230592e26c49de427b20.html">currentWriteIndex</a></td>
+                        <td>int</td>
+                        <td></td>
+                    </tr>
+                    
+                </table>
+            </section>
+            
+
+            <!-- Operations -->
+
+            
+            <section>
+                <h3>Operations</h3>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>Visibility</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="aa5d5b206e0d9594f8485df616903ec7.html">NioSocketChannel(parent: Channel, factory: ChannelFactory, pipeline: ChannelPipeline, sink: ChannelSink, socket: SocketChannel)</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="f69302e328c0a33128c6516692574651.html">getWorker(): NioWorker</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="a7f74f4b5a036de85ee3f1ce2f3db4ed.html">setWorker(worker: NioWorker): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="83a3b3259b8e24e76fc0cf165ec119c3.html">getConfig(): NioSocketChannelConfig</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="57cb5917bba1200a9b5489f8272cc21b.html">getLocalAddress(): InetSocketAddress</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="dd647d8b7cf3143cfc2d4fa01b9ca6b6.html">getRemoteAddress(): InetSocketAddress</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="5b390177677cc1f0fc80abf0d1581199.html">isBound(): boolean</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="ee726fd0dbdb8cf9d3ccb91637e6bed5.html">isConnected(): boolean</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>protected</td>
+                        <td><a href="9a29226df345acc4a90ee648244e0890.html">setClosed(): boolean</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>protected</td>
+                        <td><a href="3aac9324ff147441f92c14042879e80b.html">setInterestOpsNow(interestOps: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>protected</td>
+                        <td><a href="8a3d9ffa8324e09e052227edb7f92a79.html">getSucceededFuture(): ChannelFuture</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="c025ad79906601523018bab12a5b043c.html">write(message: Object, remoteAddress: SocketAddress): ChannelFuture</a></td>
+                        <td></td>
+                    </tr>
+                    
+                </table>
+            </section>
+            
+
+            <!-- Receptions -->
+
+            
+
+            <!-- Extension Points -->
+
+            
+
+            <!-- Parameters -->
+
+            
+
+            <!-- Diagrams -->
+
+            
+            
+
+            <!-- Behavior -->
+
+            
+
+            <!-- Action -->
+
+            
+
+            <!-- Interaction -->
+
+            
+
+            <!-- CombinedFragment -->
+
+            
+
+            <!-- Activity -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State -->
+
+            
+
+            <!-- Vertex -->
+
+            
+
+            <!-- Transition -->
+
+            
+
+            <!-- Properties -->
+
+            <section>
+                <h3>Properties</h3>
+                
+                <table class="table table-striped table-bordered">
+    <tr>
+        <th width="50%">Name</th>
+        <th width="50%">Value</th>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>name</td>
+        <td>NioSocketChannel</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>stereotype</td>
+        <td><span class='label label-info'>null</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>visibility</td>
+        <td>package</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>isAbstract</td>
+        <td><span class='label label-info'>true</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isFinalSpecialization</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isLeaf</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isActive</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+</table>                
+
+            </section>
+
+            <!-- Tags -->
+
+            
+
+            <!-- Constraints, Dependencies, Dependants -->
+
+            
+                
+                
+
+
+                
+                
+<section class="element-list">
+    <h3>Dependencies</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='8464b5242ff591aea6851f84ed79d9d1.html'><span class='node-icon _icon-UMLInterface'></span>SocketChannel</a></li>
+        
+    </ul>
+</section>
+
+
+
+                
+                
+
+            
+
+            <!-- Relationships -->
+
+            
+            
+<section class="element-list">
+    <h3>Relationships</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='705e6f8ecc3c802654ad503771dfaf79.html'><span class='node-icon _icon-UMLGeneralization'></span>(NioSocketChannel→AbstractChannel)</a></li>
+        
+        <li><a href='56b9a09ed65aa33ba3ab487c85ab89ea.html'><span class='node-icon _icon-UMLInterfaceRealization'></span>(NioSocketChannel→SocketChannel)</a></li>
+        
+        <li><a href='f23d087aec20d13636d6f0aef92e41aa.html'><span class='node-icon _icon-UMLAssociation'></span>(NioSocketChannel—SocketChannel)</a></li>
+        
+        <li><a href='1026256ed726bb333cc4d15229d264ea.html'><span class='node-icon _icon-UMLAssociation'></span>(NioSocketChannel—NioSocketChannelConfig)</a></li>
+        
+        <li><a href='d3ea7c02f2077e205cdac36d1bfeeda3.html'><span class='node-icon _icon-UMLAssociation'></span>(NioSocketChannel—MessageEvent)</a></li>
+        
+        <li><a href='b3f9fcb0119ff90bc5b3a2b3c0e6d1c5.html'><span class='node-icon _icon-UMLAssociation'></span>(NioSocketChannel—MessageEvent)</a></li>
+        
+        <li><a href='3a346f9a6aeacca7cac932a64146735d.html'><span class='node-icon _icon-UMLGeneralization'></span>(NioAcceptedSocketChannel→NioSocketChannel)</a></li>
+        
+        <li><a href='a326b0747b4fcd30ea1210178442bc34.html'><span class='node-icon _icon-UMLGeneralization'></span>(NioClientSocketChannel→NioSocketChannel)</a></li>
+        
+    </ul>
+</section>
+
+
+
+            <!-- Owned Elements -->
+
+            
+            
+<section class="element-list">
+    <h3>Owned Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='705e6f8ecc3c802654ad503771dfaf79.html'><span class='node-icon _icon-UMLGeneralization'></span>(NioSocketChannel→AbstractChannel)</a></li>
+        
+        <li><a href='56b9a09ed65aa33ba3ab487c85ab89ea.html'><span class='node-icon _icon-UMLInterfaceRealization'></span>(NioSocketChannel→SocketChannel)</a></li>
+        
+        <li><a href='f23d087aec20d13636d6f0aef92e41aa.html'><span class='node-icon _icon-UMLAssociation'></span>(NioSocketChannel—SocketChannel)</a></li>
+        
+        <li><a href='1026256ed726bb333cc4d15229d264ea.html'><span class='node-icon _icon-UMLAssociation'></span>(NioSocketChannel—NioSocketChannelConfig)</a></li>
+        
+        <li><a href='d3ea7c02f2077e205cdac36d1bfeeda3.html'><span class='node-icon _icon-UMLAssociation'></span>(NioSocketChannel—MessageEvent)</a></li>
+        
+        <li><a href='b3f9fcb0119ff90bc5b3a2b3c0e6d1c5.html'><span class='node-icon _icon-UMLAssociation'></span>(NioSocketChannel—MessageEvent)</a></li>
+        
+    </ul>
+</section>
+
+
+
+        </div>
+    </body>
+</html>

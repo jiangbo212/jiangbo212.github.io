@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ChannelBuffer</title>
+        <!-- <script src="http://use.edgefonts.net/source-sans-pro;source-code-pro.js"></script> -->
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Source+Code+Pro:300,400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../assets/css/jquery.bonsai.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/icons.css">
+<script type="text/javascript" src="../assets/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.bonsai.js"></script>
+<!-- <script type="text/javascript" src="../assets/js/main.js"></script> -->
+
+    </head>
+    <body>
+        <div>
+
+            <!-- Name Title -->
+
+            <h1>ChannelBuffer</h1>
+
+            <!-- Type and Stereotype -->
+
+            <section style="margin-top: .5em;">
+                <span class="alert alert-info">
+                    <span class="node-icon _icon-UMLInterface"></span>
+                    UMLInterface
+                </span>
+                
+            </section>
+
+            <!-- Path -->
+
+            <section style="margin-top: 10px">
+                
+                
+                
+                    
+                    <span class="label label-info"><a href='cf9c8b720f3815adeccaf3ef6e48c6c4.html'><span class='node-icon _icon-Project'></span>Untitled</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='6550300e57d7fc770bd2e9afbcdb3ecb.html'><span class='node-icon _icon-UMLModel'></span>JavaReverse</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7ff2d96ca3eb7f62f48c1a30b3c7c990.html'><span class='node-icon _icon-UMLPackage'></span>net</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7adc4be4f2e4859086f068fc27512d85.html'><span class='node-icon _icon-UMLPackage'></span>gleamynode</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='bb15307bdbbaf31bfef4f71be74150ae.html'><span class='node-icon _icon-UMLPackage'></span>netty</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='13ebeea6c90c35d72f303d2d478d584e.html'><span class='node-icon _icon-UMLPackage'></span>buffer</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='4464ce985e4b9d0e4012ffa39864027e.html'><span class='node-icon _icon-UMLInterface'></span>ChannelBuffer</a></span>
+                
+            </section>
+
+            <!-- Diagram -->
+
+            
+
+            <!-- Description -->
+
+            
+            <section>
+                <h3>Description</h3>
+                <div>
+                    
+                        <p>Copyright (C) 2008  Trustin Heuiseung Lee
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, 5th Floor, Boston, MA 02110-1301 USA
+Abstraction of a byte-level buffer - the fundamental data structure
+to represent low-level binary and text messages.
+@apiviz.landmark
+@apiviz.exclude ^java.io.[^.]+Stream$
+Copyright (C) 2008  Trustin Heuiseung Lee
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, 5th Floor, Boston, MA 02110-1301 USA
+A random and sequential accessible sequence of zero or more bytes (octets).
+This interface provides an abstract view for one or more primitive byte
+arrays ({@code byte[]}) and {@linkplain ByteBuffer NIO buffers}.
+&lt;h3&gt;Creation of a buffer&lt;/h3&gt;
+It is common for a user to create a new buffer using {@link ChannelBuffers}
+utility class rather than calling an individual implementation&#39;s constructor.
+&lt;h3&gt;Random Access Indexing&lt;/h3&gt;
+Just like an ordinary primitive byte array, {@link ChannelBuffer} uses
+&lt;a href=&quot;http://en.wikipedia.org/wiki/Index<em>(information</em>technology)#Array<em>element</em>identifier&quot;&gt;zero-based indexing&lt;/a&gt;.
+It means the index of the first byte is always {@code 0} and the index of
+the last byte is always {@link #capacity() capacity - 1}.  For example, to
+iterate all bytes of a buffer, you can do the following, regardless of
+its internal implementation:
+&lt;pre&gt;
+ChannelBuffer buffer = ...;
+for (int i = 0; i &amp;lt; buffer.capacity(); i ++&lt;/strong&gt;) {
+byte b = array.getByte(i);
+System.out.println((char) b);
+}
+&lt;/pre&gt;
+&lt;h3&gt;Sequential Access Indexing&lt;/h3&gt;
+{@link ChannelBuffer} provides two pointer variables to support sequential
+read and write operations - {@link #readerIndex() readerIndex} for a read
+operation and {@link #writerIndex() writerIndex} for a write operation
+respectively.  The following diagram shows how a buffer is segmented into
+three areas by the two pointers:
+&lt;pre&gt;
++-------------------+------------------+------------------+
+| discardable bytes |  readable bytes  |  writable space  |
+|                   |     (CONTENT)    |                  |
++-------------------+------------------+------------------+
+|                   |                  |                  |
+0      &lt;=      readerIndex   &lt;=   writerIndex    &lt;=    capacity
+&lt;/pre&gt;
+&lt;h4&gt;Readable bytes (the actual &#39;content&#39; of the buffer)&lt;/h4&gt;
+This segment, so called &#39;the &lt;strong&gt;content&lt;/strong&gt; of a buffer&#39;, is where
+the actual data is stored.  Any operation whose name starts with
+{@code read} or {@code skip} will get or skip the data at the current
+{@link #readerIndex() readerIndex} and increase it by the number of read
+bytes.  If the argument of the read operation is also a {@link ChannelBuffer}
+and no start index is specified, the specified buffer&#39;s
+{@link #readerIndex() readerIndex} is increased together.
+&lt;p&gt;
+If there&#39;s not enough content left, {@link IndexOutOfBoundsException} is
+raised.  The default value of newly allocated, wrapped or copied buffer&#39;s
+{@link #readerIndex() readerIndex} is {@code 0}.
+&lt;pre&gt;
+// Iterates the readable bytes of a buffer.
+ChannelBuffer buffer = ...;
+while (buffer.readable()) {
+System.out.println(buffer.readByte());
+}
+&lt;/pre&gt;
+&lt;h4&gt;Writable space&lt;/h4&gt;
+This segment is a undefined space which needs to be filled.  Any operation
+whose name ends with {@code write} will write the data at the current
+{@link #writerIndex() writerIndex} and increase it by the number of written
+bytes.  If the argument of the write operation is also a {@link ChannelBuffer},
+and no start index is specified, the specified buffer&#39;s
+{@link #readerIndex() readerIndex} is increased together.
+&lt;p&gt;
+If there&#39;s not enough writable space left, {@link IndexOutOfBoundsException}
+is raised.  The default value of newly allocated buffer&#39;s
+{@link #writerIndex() writerIndex} is {@code 0}.  The default value of
+wrapped or copied buffer&#39;s {@link #writerIndex() writerIndex} is the
+{@link #capacity() capacity} of the buffer.
+&lt;pre&gt;
+// Fills the writable space of a buffer with random integers.
+ChannelBuffer buffer = ...;
+while (buffer.writableBytes() &gt;= 4) {
+buffer.writeInt(random.nextInt());
+}
+&lt;/pre&gt;
+&lt;h4&gt;Discardable bytes&lt;/h4&gt;
+This segment contains the bytes which were read already by a read operation.
+Initially, the size of this segment is {@code 0}, but its size increases up
+to the {@link #writerIndex() writerIndex} as read operations are executed.
+The read bytes can be discarded by calling {@link #discardReadBytes()} to
+reclaim unused area as depicted by the following diagram:
+&lt;pre&gt;
+BEFORE discardReadBytes()
++-------------------+------------------+------------------+
+| discardable bytes |  readable bytes  |  writable space  |
+|                   |     (CONTENT)    |                  |
++-------------------+------------------+------------------+
+|                   |                  |                  |
+0      &lt;=      readerIndex   &lt;=   writerIndex    &lt;=    capacity
+AFTER discardReadBytes()
++------------------+--------------------------------------+
+|  readable bytes  |    writable space (got more space)   |
+|     (CONTENT)    |                                      |
++------------------+--------------------------------------+
+|                  |                                      |
+readerIndex (0) &lt;= writerIndex (decreased)        &lt;=        capacity
+&lt;/pre&gt;
+&lt;h4&gt;Clearing the buffer indexes&lt;/h4&gt;
+You can set both {@link #readerIndex() readerIndex} and
+{@link #writerIndex() writerIndex} to {@code 0} by calling {@link #clear()}.
+It doesn&#39;t clear the buffer content (e.g. filling with {@code 0}) but just
+clears the two pointers.  Please also note that the semantic of this
+operation is different from {@link ByteBuffer#clear()}.
+&lt;pre&gt;
+BEFORE clear()
++-------------------+------------------+------------------+
+| discardable bytes |  readable bytes  |  writable space  |
+|                   |     (CONTENT)    |                  |
++-------------------+------------------+------------------+
+|                   |                  |                  |
+0      &lt;=      readerIndex   &lt;=   writerIndex    &lt;=    capacity
+AFTER clear()
++---------------------------------------------------------+
+|             writable space (got more space)             |
++---------------------------------------------------------+
+|                                                         |
+0 = readerIndex = writerIndex            &lt;=            capacity
+&lt;/pre&gt;
+&lt;h3&gt;Search operations&lt;/h3&gt;
+Various {@code indexOf()} methods help you locate an index of a value which
+meets a certain criteria.  Complicated dynamic sequential search can be done
+with {@link ChannelBufferIndexFinder} as well as simple static single byte
+search.
+&lt;h3&gt;Mark and reset&lt;/h3&gt;
+There are two marker indexes in every buffer. One is for storing
+{@link #readerIndex() readerIndex} and the other is for storing
+{@link #writerIndex() writerIndex}.  You can always reposition one of the
+two indexes by calling a reset method.  It works in a similar fashion to
+the mark and reset methods in {@link InputStream} except that there&#39;s no
+{@code readlimit}.
+&lt;h3&gt;Derived buffers&lt;/h3&gt;
+You can create a view of an existing buffer by calling either
+{@link #duplicate()}, {@link #slice()} or {@link #slice(int, int)}.
+A derived buffer will have an independent {@link #readerIndex() readerIndex},
+{@link #writerIndex() writerIndex} and marker indexes, while it shares
+other internal data representation, just like a NIO {@link ByteBuffer} does.
+&lt;p&gt;
+In case a completely fresh copy of an existing buffer is required, please
+call {@link #copy()} method instead.
+&lt;h3&gt;Conversion to existing JDK types&lt;/h3&gt;
+Various {@link #toByteBuffer()} and {@link #toByteBuffers()} methods convert
+a {@link ChannelBuffer} into one or more NIO buffers.  These methods avoid
+buffer allocation and memory copy whenever possible, but there&#39;s no
+guarantee that memory copy will not be involved or that an explicit memory
+copy will be involved.
+&lt;p&gt;
+In case you need to convert a {@link ChannelBuffer} into
+an {@link InputStream} or an {@link OutputStream}, please refer to
+{@link ChannelBufferInputStream} and {@link ChannelBufferOutputStream}.
+@author The Netty Project (netty@googlegroups.com)
+@author Trustin Lee (trustin@gmail.com)
+@version $Rev$, $Date$
+@apiviz.landmark</p>
+                    
+                </div>
+            </section>
+            
+
+            <!-- Specification -->
+
+            
+
+            <!-- Directed Relationship -->
+
+            
+
+            <!-- Undirected Relationship -->
+
+            
+
+            <!-- Classifier -->
+
+            
+                
+                
+<section class="element-list">
+    <h3>Generalized Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='f5637dc656700aeb7c8c7c7702ff2b9c.html'><span class='node-icon _icon-UMLInterface'></span>Comparable</a></li>
+        
+    </ul>
+</section>
+
+
+
+                
+                
+<section class="element-list">
+    <h3>Specialized Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='6a995e8e6568350ec637d65dae4deac5.html'><span class='node-icon _icon-UMLInterface'></span>WrappedChannelBuffer</a></li>
+        
+    </ul>
+</section>
+
+
+
+                
+                
+
+
+                
+                
+
+
+                
+                
+
+            
+
+            <!-- Interface -->
+
+            
+                
+                
+<section class="element-list">
+    <h3>Implementing Classifiers</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='681be4de7f4330124421d49868736d72.html'><span class='node-icon _icon-UMLClass'></span>AbstractChannelBuffer</a></li>
+        
+    </ul>
+</section>
+
+
+            
+
+            <!-- Component -->
+
+            
+
+            <!-- Node -->
+
+            
+
+            <!-- Actor -->
+
+            
+
+            <!-- Use Case -->
+
+            
+
+            <!-- Template Parameters -->
+
+            
+
+            <!-- Literals -->
+
+            
+
+            <!-- Attributes -->
+
+            
+
+            <!-- Operations -->
+
+            
+            <section>
+                <h3>Operations</h3>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>Visibility</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="9160f319b57a87bc4d228ff0e3747145.html">capacity(): int</a></td>
+                        <td><p>Returns the number of bytes (octets) this buffer can contain.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="68d0459457b1e921c72ff80675b6e496.html">order(): ByteOrder</a></td>
+                        <td><p>Returns the &lt;a href=&quot;http://en.wikipedia.org/wiki/Endianness&quot;&gt;endianness&lt;/a&gt;
+of this buffer.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="a07779b4caf5c8556c4995e1ad5223cd.html">readerIndex(): int</a></td>
+                        <td><p>Returns the {@code readerIndex} of this buffer.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="aa03a2fde430749bb4744faf45934769.html">readerIndex(readerIndex: int): void</a></td>
+                        <td><p>Sets the {@code readerIndex} of this buffer.
+@throws IndexOutOfBoundsException
+if the specified {@code readerIndex} is less than 0 or
+greater than {@code writerIndex}</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="03bd0db8507bda62b440e67b8c988e35.html">writerIndex(): int</a></td>
+                        <td><p>Returns the {@code writerIndex} of this buffer.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="bad6f62310c6004d2d1e46dfa21e8281.html">writerIndex(writerIndex: int): void</a></td>
+                        <td><p>Sets the {@code writerIndex} of this buffer.
+@throws IndexOutOfBoundsException
+if the specified {@code writerIndex} is less than
+{@code readerIndex} or greater than {@code capacity}</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="7d7e5ef7fd7f4b5de10a3691018d921a.html">setIndex(readerIndex: int, writerIndex: int): void</a></td>
+                        <td><p>Sets the {@code readerIndex} and {@code writerIndex} of this buffer
+in one shot.  This method is useful because you don&#39;t need to worry
+about the invocation order of {@link #readerIndex(int)} and {@link #writerIndex(int)}
+methods.  For example, the following code will fail:
+&lt;pre&gt;
+// Create a buffer whose readerIndex, writerIndex and capacity are
+// 0, 0 and 8 respectively.
+ChannelBuffer buf = ChannelBuffers.buffer(8);
+// IndexOutOfBoundsException is thrown because the specified
+// readerIndex (2) cannot be greater than the current writerIndex (0).
+buf.readerIndex(2);
+buf.writerIndex(4);
+&lt;/pre&gt;
+The following code will also fail:
+&lt;pre&gt;
+// Create a buffer whose readerIndex, writerIndex and capacity are
+// 0, 8 and 8 respectively.
+ChannelBuffer buf = ChannelBuffers.wrappedBuffer(new byte[8]);
+// readerIndex becomes 8.
+buf.readLong();
+// IndexOutOfBoundsException is thrown because the specified
+// writerIndex (4) cannot be less than the current readerIndex (8).
+buf.writerIndex(4);
+buf.readerIndex(2);
+&lt;/pre&gt;
+By contrast, {@link #setIndex(int, int)} guarantees that it never
+throws an {@link IndexOutOfBoundsException} as long as the specified
+indexes meets all constraints, regardless what the current index values
+of the buffer are:
+&lt;pre&gt;
+// No matter what the current state of the buffer is, the following
+// call always succeeds as long as the capacity of the buffer is not
+// less than 4.
+buf.setIndex(2, 4);
+&lt;/pre&gt;
+@throws IndexOutOfBoundsException
+if the specified {@code readerIndex} is less than 0,
+if the specified {@code writerIndex} is less than the specified
+{@code readerIndex} or if the specified {@code writerIndex} is
+greater than {@code capacity}</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="7ee1fbb9df0b3d784d94564583703e78.html">readableBytes(): int</a></td>
+                        <td><p>Returns the number of readable bytes which equals to
+{@code (writerIndex - readerIndex)}.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="dd3cec47e23fd0e26f8be0abbe3b3e59.html">writableBytes(): int</a></td>
+                        <td><p>Returns the number of writable bytes which equals to
+{@code (capacity - writerIndex)}.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="5681a30a42baad029d308f4feb3dbb12.html">readable(): boolean</a></td>
+                        <td><p>Returns {@code true} if and only if {@link #readableBytes() readableBytes}
+if greater than {@code 0}.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="f86e7410a8a6e7f6414f45bc010036ec.html">writable(): boolean</a></td>
+                        <td><p>Returns {@code true} if and only if {@link #writableBytes() writableBytes}
+if greater than {@code 0}.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="1d496ebdba6a8c0c7a53f7ead215f9f0.html">clear(): void</a></td>
+                        <td><p>Sets the {@code readerIndex} and {@code writerIndex} of this buffer to
+{@code 0}.
+This method is identical to {@link #setIndex(int, int) setIndex(0, 0)}.
+&lt;p&gt;
+Please note that the behavior of this method is different
+from that of NIO {@link ByteBuffer}, which sets the {@code limit} to
+the {@code capacity}.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="d989bdb444429889409e0ea773e9b3fe.html">markReaderIndex(): void</a></td>
+                        <td><p>Marks the current {@code readerIndex} in this buffer.  You can restore
+the marked {@code readerIndex} by calling {@link #resetReaderIndex()}.
+The initial value of the marked {@code readerIndex} is always {@code 0}.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="8eb5acb63c37d0d82df30fa3b28c5604.html">resetReaderIndex(): void</a></td>
+                        <td><p>Repositions the current {@code readerIndex} to the marked {@code readerIndex}
+in this buffer.
+@throws IndexOutOfBoundsException
+if the current {@code writerIndex} is less than the marked
+{@code readerIndex}</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="ca8b419e524d9a234ae865d02623f9ec.html">markWriterIndex(): void</a></td>
+                        <td><p>Marks the current {@code writerIndex} in this buffer.  You can restore
+the marked {@code writerIndex} by calling {@link #resetWriterIndex()}.
+The initial value of the marked {@code writerIndex} is always {@code 0}.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="041a075a2d3df88896342b509316c943.html">resetWriterIndex(): void</a></td>
+                        <td><p>Repositions the current {@code writerIndex} to the marked {@code writerIndex}
+in this buffer.
+@throws IndexOutOfBoundsException
+if the current {@code readerIndex} is greater than the marked
+{@code writerIndex}</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="4c3c99d5edfc5f3a66ceaf664b93c070.html">discardReadBytes(): void</a></td>
+                        <td><p>Discards the bytes between the 0th index and {@code readerIndex}.
+It moves the bytes between {@code readerIndex} and {@code writerIndex}
+to the 0th index, and sets {@code readerIndex} and {@code writerIndex}
+to {@code 0} and {@code oldWriterIndex - oldReaderIndex} respectively.
+&lt;p&gt;
+Please refer to the class documentation for more detailed explanation
+with a diagram.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="b03813a4b2b7968cc4db37e000d34fa8.html">getByte(index: int): byte</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="3174f7bde4831f571c5ccbc76e749127.html">getShort(index: int): short</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="b56268063b9c0b668451b46761056399.html">getMedium(index: int): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="94d0bc6b29324f898df1fc401c095bb1.html">getInt(index: int): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="5437819c334a82ab9d3858c22024e2a0.html">getLong(index: int): long</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="846f8d3ad0eb88b84f07d0d9f9678be7.html">getBytes(index: int, dst: ChannelBuffer): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="de14053153b76b0156972394958aa31e.html">getBytes(index: int, dst: ChannelBuffer, dstIndex: int, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="c5e70f1dc8fd5c111558480045facf94.html">getBytes(index: int, dst: byte): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="9f2c1db8c0abf9dd45061bfa68d08858.html">getBytes(index: int, dst: byte, dstIndex: int, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="43a25dcefbe5b751284858c668e08d9c.html">getBytes(index: int, dst: ByteBuffer): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="ad50cf0252432e86f9828550f180a928.html">getBytes(index: int, out: OutputStream, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="16788e55cc8af2ee759c3c44496f5da2.html">getBytes(index: int, out: GatheringByteChannel, length: int): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="4f38a9f47807e0ab5f9b95614b1db4d0.html">setByte(index: int, value: byte): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="6407d8232ad7b2b00483daf27ff26731.html">setShort(index: int, value: short): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="5918ad1b552bf34a6427465e7597cfe9.html">setMedium(index: int, value: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="67ebd9a1ba09533525f9609f3efc5016.html">setInt(index: int, value: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="5cf02183edbf35e16955094b5c14d113.html">setLong(index: int, value: long): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="10bc0509d4804c4436bb98243c86ae2d.html">setBytes(index: int, src: ChannelBuffer): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="eaf5645f471e05bfb8ac451ffc6f2877.html">setBytes(index: int, src: ChannelBuffer, srcIndex: int, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="7f392c88e0fae9864c02f030097e3996.html">setBytes(index: int, src: byte): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="f458df4088cf7893246500fcd13d62ce.html">setBytes(index: int, src: byte, srcIndex: int, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="f5a3e8ff17930034a28e80373ae72750.html">setBytes(index: int, src: ByteBuffer): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="c19e33858a02007fc9f1938c68bf171a.html">setBytes(index: int, in: InputStream, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="32cd592a0dac013a0654a7915dc686b8.html">setBytes(index: int, in: ScatteringByteChannel, length: int): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="ac9673945f6976b52f42aa571e450f38.html">readByte(): byte</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="8b20e86ae575d6a72c71e116a453cc71.html">readShort(): short</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="fb235dda203d0265a27936e071a79ab1.html">readMedium(): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="a4899988830ccc44ac0446532af24ec8.html">readInt(): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="910802379769af18f8203f8d6b961d78.html">readLong(): long</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="7a93e7e147c2c4f8e6f46c9b5c9fe327.html">readBytes(): ChannelBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="1e7e16688b04ce81a9d722ac153600ee.html">readBytes(length: int): ChannelBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="325f01a95d4c437f83021c8b23bf6a9c.html">readBytes(endIndexFinder: ChannelBufferIndexFinder): ChannelBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="75a0dfca746e243c59187e3e9eebc13f.html">readBytes(dst: ChannelBuffer): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="6e7e0742745f0ec1a536f9821a21d004.html">readBytes(dst: ChannelBuffer, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="cfc309d7d44ff071f69bb13a5744e677.html">readBytes(dst: ChannelBuffer, dstIndex: int, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="36fd8fa7addfc1ae2a72c193d81f9fc4.html">readBytes(dst: byte): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="9a69b65b88193fae6f1db2496836c650.html">readBytes(dst: byte, dstIndex: int, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="678ac87bbd35ad5f3b486008fd5c5dd3.html">readBytes(dst: ByteBuffer): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="ce531301675706193ba9fc5ef221a9e2.html">readBytes(out: OutputStream, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="cd1e545c478d8fe87d60ffa55cace3be.html">readBytes(out: GatheringByteChannel, length: int): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="479a783cafcfcea328871fe98e9210fb.html">skipBytes(length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="d2b14db7208b371e4036652796285718.html">skipBytes(firstIndexFinder: ChannelBufferIndexFinder): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="30cc77cb8293ff6a4962ab25c913c86f.html">writeByte(value: byte): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="8dabae18e33bdf2e7da06a5818cd38f2.html">writeShort(value: short): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="4ef423ebc38c25fde08e8235bc020455.html">writeMedium(value: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="046fd90cd88b1cde5370084e9b3cae44.html">writeInt(value: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="2b5f4118028bb66020c0b54961024e7f.html">writeLong(value: long): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="c42bd97c7c0139d9452d4d1a0f29f75f.html">writeBytes(src: ChannelBuffer): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="7d2c5dc052881cf865f7377ee0c93602.html">writeBytes(src: ChannelBuffer, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="839dbb50cf24d5efb19487dda34856c8.html">writeBytes(src: ChannelBuffer, srcIndex: int, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="4df039068321bbbd4e5c560986d5bec7.html">writeBytes(src: byte): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="583566b1b469f09bcb3d575abd4aa57c.html">writeBytes(src: byte, srcIndex: int, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="ce959e358ccc9261ef8c71c531fb0601.html">writeBytes(src: ByteBuffer): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="7148142fcf92341d324cf7892ef7e2a4.html">writeBytes(in: InputStream, length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="69b6bd78971f1d31e22792e7dea570ed.html">writeBytes(in: ScatteringByteChannel, length: int): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="0f7359baf7d7544cb61d5473adbb0135.html">writePlaceholder(length: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="68ac9d864a4b6f5984338bdf84078df0.html">indexOf(fromIndex: int, toIndex: int, value: byte): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="e2cb0ba95941e2e725c8109db437e6b8.html">indexOf(fromIndex: int, toIndex: int, indexFinder: ChannelBufferIndexFinder): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="744235096062ac59b981c3195a5cec9f.html">copy(): ChannelBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="6fb663a567b3cdedc44f42e9df24cfb4.html">copy(index: int, length: int): ChannelBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="87ba92c13847e4fbf58bd5a40af455ec.html">slice(): ChannelBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="157a30234c3d504dae6eb879e0a441a1.html">slice(index: int, length: int): ChannelBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="9b243ee7fb850b9dc23d335873b00033.html">duplicate(): ChannelBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="fe985bd0c68a9bc8869ce755362db1c0.html">toByteBuffer(): ByteBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="248dd040d5e59b9750e1b479ed8a13a3.html">toByteBuffer(index: int, length: int): ByteBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="b975d92f738fbc553d28912f85ac727d.html">toByteBuffers(): ByteBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="7b8c1af21d0eb2759b7f353bf8e3c9f5.html">toByteBuffers(index: int, length: int): ByteBuffer</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="072b6436605d6d24896905f4baee89c6.html">hashCode(): int</a></td>
+                        <td><p>Returns a hash code which was calculated from the content of this
+buffer.  If there&#39;s a byte array which is
+{@linkplain #equals(Object) equal to} this array, both arrays should
+return the same value.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="166527297fe5b38e780e033f0efc18e2.html">equals(obj: Object): boolean</a></td>
+                        <td><p>Determines if the content of the specified buffer is identical to the
+content of this array.  &#39;Identical&#39; here means:
+&lt;ul&gt;
+&lt;li&gt;the size of the contents of the two buffers are same and&lt;/li&gt;
+&lt;li&gt;every single byte of the content of the two buffers are same.&lt;/li&gt;
+&lt;/ul&gt;
+Please note that it doesn&#39;t compare {@link #readerIndex()} nor
+{@link #writerIndex()}.  This method also returns {@code false} for
+{@code null} and an object which is not an instance of
+{@link ChannelBuffer} type.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="4047d54417061b30939378794f4d1976.html">compareTo(buffer: ChannelBuffer): int</a></td>
+                        <td><p>Compares the content of the specified buffer to the content of this
+buffer.  Comparison is performed in the same manner with the string
+comparison functions of various languages such as {@code strcmp},
+{@code memcmp} and {@link String#compareTo(String)}.</p></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="f3411050a56a872c3036edb5f923e355.html">toString(): String</a></td>
+                        <td><p>Returns the string representation of this buffer.  This method doesn&#39;t
+necessarily return the whole content of the buffer but returns
+the values of the key properties such as {@link #readerIndex()},
+{@link #writerIndex()} and {@link #capacity()}..</p></td>
+                    </tr>
+                    
+                </table>
+            </section>
+            
+
+            <!-- Receptions -->
+
+            
+
+            <!-- Extension Points -->
+
+            
+
+            <!-- Parameters -->
+
+            
+
+            <!-- Diagrams -->
+
+            
+            
+
+            <!-- Behavior -->
+
+            
+
+            <!-- Action -->
+
+            
+
+            <!-- Interaction -->
+
+            
+
+            <!-- CombinedFragment -->
+
+            
+
+            <!-- Activity -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State -->
+
+            
+
+            <!-- Vertex -->
+
+            
+
+            <!-- Transition -->
+
+            
+
+            <!-- Properties -->
+
+            <section>
+                <h3>Properties</h3>
+                
+                <table class="table table-striped table-bordered">
+    <tr>
+        <th width="50%">Name</th>
+        <th width="50%">Value</th>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>name</td>
+        <td>ChannelBuffer</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>stereotype</td>
+        <td><span class='label label-info'>null</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>visibility</td>
+        <td>public</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>isAbstract</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isFinalSpecialization</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isLeaf</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+</table>                
+
+            </section>
+
+            <!-- Tags -->
+
+            
+
+            <!-- Constraints, Dependencies, Dependants -->
+
+            
+                
+                
+
+
+                
+                
+
+
+                
+                
+<section class="element-list">
+    <h3>Dependants</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='681be4de7f4330124421d49868736d72.html'><span class='node-icon _icon-UMLClass'></span>AbstractChannelBuffer</a></li>
+        
+    </ul>
+</section>
+
+
+            
+
+            <!-- Relationships -->
+
+            
+            
+<section class="element-list">
+    <h3>Relationships</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='fd2c585f5360bff54ef9c43ba1b1a260.html'><span class='node-icon _icon-UMLAssociation'></span>(CompositeChannelBufferTest—ChannelBuffer)</a></li>
+        
+        <li><a href='bda37ff3db013030de5b1c657e95f878.html'><span class='node-icon _icon-UMLAssociation'></span>(CompositeChannelBufferTest—ChannelBuffer)</a></li>
+        
+        <li><a href='c3baf9a3e89346b3f08a8b5164411604.html'><span class='node-icon _icon-UMLAssociation'></span>(BigEndianHeapChannelBufferTest—ChannelBuffer)</a></li>
+        
+        <li><a href='0e8d22c5d0ebf0e364c2aa5ee999e7a7.html'><span class='node-icon _icon-UMLAssociation'></span>(DirectChannelBufferTest—ChannelBuffer)</a></li>
+        
+        <li><a href='7883c6689eab53f2cb0dc96d2e772503.html'><span class='node-icon _icon-UMLAssociation'></span>(LittleEndianHeapChannelBufferTest—ChannelBuffer)</a></li>
+        
+        <li><a href='036085e27450fcc45fd7cfb4cefcda22.html'><span class='node-icon _icon-UMLAssociation'></span>(AbstractChannelBufferTest—ChannelBuffer)</a></li>
+        
+        <li><a href='60ccd44d071c83c3e419b503d2a6f775.html'><span class='node-icon _icon-UMLAssociation'></span>(TruncatedChannelBufferTest—ChannelBuffer)</a></li>
+        
+        <li><a href='a91c526e163bb95692809e31fa35218f.html'><span class='node-icon _icon-UMLAssociation'></span>(SlicedChannelBufferTest—ChannelBuffer)</a></li>
+        
+        <li><a href='9cc261161e256e33b674523e14d6f2da.html'><span class='node-icon _icon-UMLAssociation'></span>(DuplicateChannelBufferTest—ChannelBuffer)</a></li>
+        
+        <li><a href='46e0fb8c559289e1334d7b51a3083843.html'><span class='node-icon _icon-UMLAssociation'></span>(DynamicChannelBuffer—ChannelBuffer)</a></li>
+        
+        <li><a href='a1809f0bd4366f393ad07d30d4979cb4.html'><span class='node-icon _icon-UMLAssociation'></span>(ReadOnlyChannelBuffer—ChannelBuffer)</a></li>
+        
+        <li><a href='01344fef042d98c19b761bda365db926.html'><span class='node-icon _icon-UMLAssociation'></span>(CompositeChannelBuffer—ChannelBuffer)</a></li>
+        
+        <li><a href='f92f251e23ca414fd9d8c4294e384f59.html'><span class='node-icon _icon-UMLAssociation'></span>(DuplicatedChannelBuffer—ChannelBuffer)</a></li>
+        
+        <li><a href='42876e2260fab0d19d841a6dbd2eb9c3.html'><span class='node-icon _icon-UMLAssociation'></span>(ChannelBufferInputStream—ChannelBuffer)</a></li>
+        
+        <li><a href='c3a824758362835ad19a5aad0d5936cf.html'><span class='node-icon _icon-UMLInterfaceRealization'></span>(AbstractChannelBuffer→ChannelBuffer)</a></li>
+        
+        <li><a href='262cb9be693fca71517179ca43304b64.html'><span class='node-icon _icon-UMLAssociation'></span>(TruncatedChannelBuffer—ChannelBuffer)</a></li>
+        
+        <li><a href='5f3a3399379861742abf9d413e60c0aa.html'><span class='node-icon _icon-UMLAssociation'></span>(ChannelBufferOutputStream—ChannelBuffer)</a></li>
+        
+        <li><a href='2e1d7637853a3e3c2b28b75f6fbdc7a3.html'><span class='node-icon _icon-UMLGeneralization'></span>(WrappedChannelBuffer→ChannelBuffer)</a></li>
+        
+        <li><a href='ac34c316e80dccfc8456e8df527910f7.html'><span class='node-icon _icon-UMLAssociation'></span>(SlicedChannelBuffer—ChannelBuffer)</a></li>
+        
+        <li><a href='265eb19d97887397c4275376039b5b74.html'><span class='node-icon _icon-UMLGeneralization'></span>(ChannelBuffer→Comparable)</a></li>
+        
+        <li><a href='c14072be4a0019d08842dc6a2f6b76f4.html'><span class='node-icon _icon-UMLAssociation'></span>(ChannelBuffer—ChannelBuffer)</a></li>
+        
+    </ul>
+</section>
+
+
+
+            <!-- Owned Elements -->
+
+            
+            
+<section class="element-list">
+    <h3>Owned Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='265eb19d97887397c4275376039b5b74.html'><span class='node-icon _icon-UMLGeneralization'></span>(ChannelBuffer→Comparable)</a></li>
+        
+        <li><a href='c14072be4a0019d08842dc6a2f6b76f4.html'><span class='node-icon _icon-UMLAssociation'></span>(ChannelBuffer—ChannelBuffer)</a></li>
+        
+    </ul>
+</section>
+
+
+
+        </div>
+    </body>
+</html>

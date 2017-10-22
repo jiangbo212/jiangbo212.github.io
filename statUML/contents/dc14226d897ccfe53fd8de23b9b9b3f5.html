@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ChannelBufferInputStream</title>
+        <!-- <script src="http://use.edgefonts.net/source-sans-pro;source-code-pro.js"></script> -->
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Source+Code+Pro:300,400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../assets/css/jquery.bonsai.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/icons.css">
+<script type="text/javascript" src="../assets/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.bonsai.js"></script>
+<!-- <script type="text/javascript" src="../assets/js/main.js"></script> -->
+
+    </head>
+    <body>
+        <div>
+
+            <!-- Name Title -->
+
+            <h1>ChannelBufferInputStream</h1>
+
+            <!-- Type and Stereotype -->
+
+            <section style="margin-top: .5em;">
+                <span class="alert alert-info">
+                    <span class="node-icon _icon-UMLClass"></span>
+                    UMLClass
+                </span>
+                
+            </section>
+
+            <!-- Path -->
+
+            <section style="margin-top: 10px">
+                
+                
+                
+                    
+                    <span class="label label-info"><a href='cf9c8b720f3815adeccaf3ef6e48c6c4.html'><span class='node-icon _icon-Project'></span>Untitled</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='6550300e57d7fc770bd2e9afbcdb3ecb.html'><span class='node-icon _icon-UMLModel'></span>JavaReverse</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7ff2d96ca3eb7f62f48c1a30b3c7c990.html'><span class='node-icon _icon-UMLPackage'></span>net</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7adc4be4f2e4859086f068fc27512d85.html'><span class='node-icon _icon-UMLPackage'></span>gleamynode</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='bb15307bdbbaf31bfef4f71be74150ae.html'><span class='node-icon _icon-UMLPackage'></span>netty</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='13ebeea6c90c35d72f303d2d478d584e.html'><span class='node-icon _icon-UMLPackage'></span>buffer</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='dc14226d897ccfe53fd8de23b9b9b3f5.html'><span class='node-icon _icon-UMLClass'></span>ChannelBufferInputStream</a></span>
+                
+            </section>
+
+            <!-- Diagram -->
+
+            
+
+            <!-- Description -->
+
+            
+            <section>
+                <h3>Description</h3>
+                <div>
+                    
+                        <p>Copyright (C) 2008  Trustin Heuiseung Lee
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, 5th Floor, Boston, MA 02110-1301 USA
+@author The Netty Project (netty@googlegroups.com)
+@author Trustin Lee (trustin@gmail.com)
+@version $Rev$, $Date$
+@see ChannelBufferOutputStream
+@apiviz.uses net.gleamynode.netty.buffer.ChannelBuffer</p>
+                    
+                </div>
+            </section>
+            
+
+            <!-- Specification -->
+
+            
+
+            <!-- Directed Relationship -->
+
+            
+
+            <!-- Undirected Relationship -->
+
+            
+
+            <!-- Classifier -->
+
+            
+                
+                
+<section class="element-list">
+    <h3>Generalized Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='e23e62600ef21dbb247c209a944a4c5a.html'><span class='node-icon _icon-UMLClass'></span>InputStream</a></li>
+        
+    </ul>
+</section>
+
+
+
+                
+                
+
+
+                
+                
+<section class="element-list">
+    <h3>Interfaces</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='e891bd27bdd3b7042989f4926543c8ff.html'><span class='node-icon _icon-UMLInterface'></span>DataInput</a></li>
+        
+    </ul>
+</section>
+
+
+
+                
+                
+
+
+                
+                
+
+            
+
+            <!-- Interface -->
+
+            
+
+            <!-- Component -->
+
+            
+
+            <!-- Node -->
+
+            
+
+            <!-- Actor -->
+
+            
+
+            <!-- Use Case -->
+
+            
+
+            <!-- Template Parameters -->
+
+            
+
+            <!-- Literals -->
+
+            
+
+            <!-- Attributes -->
+
+            
+            <section>
+                <h3>Attributes</h3>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>Visibility</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>private</td>
+                        <td><a href="241b7f718f148c17b87d746c81e173c1.html">startIndex</a></td>
+                        <td>int</td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>private</td>
+                        <td><a href="9f32718a90c86084eaee7b129167a23a.html">endIndex</a></td>
+                        <td>int</td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>private</td>
+                        <td><a href="7bbf16e8d2581e2026b31e8573590f32.html">lineBuf</a></td>
+                        <td><a href='8d8d29f666691519f3c3876d30a823ee.html'>StringBuilder</a></td>
+                        <td></td>
+                    </tr>
+                    
+                </table>
+            </section>
+            
+
+            <!-- Operations -->
+
+            
+            <section>
+                <h3>Operations</h3>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>Visibility</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="d212e2f35e026e05bdf5677baf459e13.html">ChannelBufferInputStream(buffer: ChannelBuffer)</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="63af2ffa207fe67f552142eb03f76b68.html">ChannelBufferInputStream(buffer: ChannelBuffer, length: int)</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="e656607a0e2e5501e862b18a6ffff23d.html">readBytes(): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="d340a39814f131d9e5c4b8a089a8f66e.html">available(): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="d5accd2d78d30059ae19cc64af9bad8f.html">mark(readlimit: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="7476f3cdbb7f866b564261d53bb71dd8.html">markSupported(): boolean</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="95436515d0bb4e05b247296f79040bcc.html">read(): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="4965837115fdad4d623aff78653f7a00.html">read(b: byte, off: int, len: int): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="b116b0d742bef944619764447ec95b03.html">reset(): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="128ec78bde602b414683f5e1b702b6bc.html">skip(n: long): long</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="103abbbe8b695c7c050d1cbe12e5fc15.html">readBoolean(): boolean</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="0372c40dd30f969311b22108fd17f3ce.html">readByte(): byte</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="46b70af4c3bca988c87fe495e22e1969.html">readChar(): char</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="040653990f7071f085bbe2fa4950cb4d.html">readDouble(): double</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="76263f215cbdd0e24cecdbfe59d5422f.html">readFloat(): float</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="0e7d31e409e8c113e9310490fd9dbef3.html">readFully(b: byte): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="171355ff48d631ee4fbc85f204d3c9d2.html">readFully(b: byte, off: int, len: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="2672fcdfaa44ea3885aae092f10cb321.html">readInt(): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="06adf72ddef12b77ce904c05d95c82f7.html">readLine(): String</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="62cb3314b57c3e3afd1728afa21b6595.html">readLong(): long</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="9e74fe34086f0e77d12b7fb962e9c738.html">readShort(): short</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="3d5985a797d3afc3481f38ea056a32eb.html">readUTF(): String</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="df793e8baff3a5da3564236077def419.html">readUnsignedByte(): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="f8e99956472b75dbbde37c3fae8b5610.html">readUnsignedShort(): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="d6222edb1ab24f6473849b8416b60436.html">skipBytes(n: int): int</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>private</td>
+                        <td><a href="059de2b799f80b58431c774dcddf5aca.html">checkAvailable(fieldSize: int): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                </table>
+            </section>
+            
+
+            <!-- Receptions -->
+
+            
+
+            <!-- Extension Points -->
+
+            
+
+            <!-- Parameters -->
+
+            
+
+            <!-- Diagrams -->
+
+            
+            
+
+            <!-- Behavior -->
+
+            
+
+            <!-- Action -->
+
+            
+
+            <!-- Interaction -->
+
+            
+
+            <!-- CombinedFragment -->
+
+            
+
+            <!-- Activity -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State -->
+
+            
+
+            <!-- Vertex -->
+
+            
+
+            <!-- Transition -->
+
+            
+
+            <!-- Properties -->
+
+            <section>
+                <h3>Properties</h3>
+                
+                <table class="table table-striped table-bordered">
+    <tr>
+        <th width="50%">Name</th>
+        <th width="50%">Value</th>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>name</td>
+        <td>ChannelBufferInputStream</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>stereotype</td>
+        <td><span class='label label-info'>null</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>visibility</td>
+        <td>public</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>isAbstract</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isFinalSpecialization</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isLeaf</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isActive</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+</table>                
+
+            </section>
+
+            <!-- Tags -->
+
+            
+
+            <!-- Constraints, Dependencies, Dependants -->
+
+            
+                
+                
+
+
+                
+                
+<section class="element-list">
+    <h3>Dependencies</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='e891bd27bdd3b7042989f4926543c8ff.html'><span class='node-icon _icon-UMLInterface'></span>DataInput</a></li>
+        
+    </ul>
+</section>
+
+
+
+                
+                
+
+            
+
+            <!-- Relationships -->
+
+            
+            
+<section class="element-list">
+    <h3>Relationships</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='5777cf752fed19be60a5e28c343021db.html'><span class='node-icon _icon-UMLGeneralization'></span>(ChannelBufferInputStream→InputStream)</a></li>
+        
+        <li><a href='26ff3c3891728df63976fa1b64c38f03.html'><span class='node-icon _icon-UMLInterfaceRealization'></span>(ChannelBufferInputStream→DataInput)</a></li>
+        
+        <li><a href='42876e2260fab0d19d841a6dbd2eb9c3.html'><span class='node-icon _icon-UMLAssociation'></span>(ChannelBufferInputStream—ChannelBuffer)</a></li>
+        
+    </ul>
+</section>
+
+
+
+            <!-- Owned Elements -->
+
+            
+            
+<section class="element-list">
+    <h3>Owned Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='5777cf752fed19be60a5e28c343021db.html'><span class='node-icon _icon-UMLGeneralization'></span>(ChannelBufferInputStream→InputStream)</a></li>
+        
+        <li><a href='26ff3c3891728df63976fa1b64c38f03.html'><span class='node-icon _icon-UMLInterfaceRealization'></span>(ChannelBufferInputStream→DataInput)</a></li>
+        
+        <li><a href='42876e2260fab0d19d841a6dbd2eb9c3.html'><span class='node-icon _icon-UMLAssociation'></span>(ChannelBufferInputStream—ChannelBuffer)</a></li>
+        
+    </ul>
+</section>
+
+
+
+        </div>
+    </body>
+</html>

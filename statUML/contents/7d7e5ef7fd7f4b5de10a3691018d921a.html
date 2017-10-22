@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>setIndex</title>
+        <!-- <script src="http://use.edgefonts.net/source-sans-pro;source-code-pro.js"></script> -->
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Source+Code+Pro:300,400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../assets/css/jquery.bonsai.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/icons.css">
+<script type="text/javascript" src="../assets/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.bonsai.js"></script>
+<!-- <script type="text/javascript" src="../assets/js/main.js"></script> -->
+
+    </head>
+    <body>
+        <div>
+
+            <!-- Name Title -->
+
+            <h1>setIndex</h1>
+
+            <!-- Type and Stereotype -->
+
+            <section style="margin-top: .5em;">
+                <span class="alert alert-info">
+                    <span class="node-icon _icon-UMLOperation"></span>
+                    UMLOperation
+                </span>
+                
+            </section>
+
+            <!-- Path -->
+
+            <section style="margin-top: 10px">
+                
+                
+                
+                    
+                    <span class="label label-info"><a href='cf9c8b720f3815adeccaf3ef6e48c6c4.html'><span class='node-icon _icon-Project'></span>Untitled</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='6550300e57d7fc770bd2e9afbcdb3ecb.html'><span class='node-icon _icon-UMLModel'></span>JavaReverse</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7ff2d96ca3eb7f62f48c1a30b3c7c990.html'><span class='node-icon _icon-UMLPackage'></span>net</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7adc4be4f2e4859086f068fc27512d85.html'><span class='node-icon _icon-UMLPackage'></span>gleamynode</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='bb15307bdbbaf31bfef4f71be74150ae.html'><span class='node-icon _icon-UMLPackage'></span>netty</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='13ebeea6c90c35d72f303d2d478d584e.html'><span class='node-icon _icon-UMLPackage'></span>buffer</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='4464ce985e4b9d0e4012ffa39864027e.html'><span class='node-icon _icon-UMLInterface'></span>ChannelBuffer</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7d7e5ef7fd7f4b5de10a3691018d921a.html'><span class='node-icon _icon-UMLOperation'></span>setIndex</a></span>
+                
+            </section>
+
+            <!-- Diagram -->
+
+            
+
+            <!-- Description -->
+
+            
+            <section>
+                <h3>Description</h3>
+                <div>
+                    
+                        <p>Sets the {@code readerIndex} and {@code writerIndex} of this buffer
+in one shot.  This method is useful because you don&#39;t need to worry
+about the invocation order of {@link #readerIndex(int)} and {@link #writerIndex(int)}
+methods.  For example, the following code will fail:
+&lt;pre&gt;
+// Create a buffer whose readerIndex, writerIndex and capacity are
+// 0, 0 and 8 respectively.
+ChannelBuffer buf = ChannelBuffers.buffer(8);
+// IndexOutOfBoundsException is thrown because the specified
+// readerIndex (2) cannot be greater than the current writerIndex (0).
+buf.readerIndex(2);
+buf.writerIndex(4);
+&lt;/pre&gt;
+The following code will also fail:
+&lt;pre&gt;
+// Create a buffer whose readerIndex, writerIndex and capacity are
+// 0, 8 and 8 respectively.
+ChannelBuffer buf = ChannelBuffers.wrappedBuffer(new byte[8]);
+// readerIndex becomes 8.
+buf.readLong();
+// IndexOutOfBoundsException is thrown because the specified
+// writerIndex (4) cannot be less than the current readerIndex (8).
+buf.writerIndex(4);
+buf.readerIndex(2);
+&lt;/pre&gt;
+By contrast, {@link #setIndex(int, int)} guarantees that it never
+throws an {@link IndexOutOfBoundsException} as long as the specified
+indexes meets all constraints, regardless what the current index values
+of the buffer are:
+&lt;pre&gt;
+// No matter what the current state of the buffer is, the following
+// call always succeeds as long as the capacity of the buffer is not
+// less than 4.
+buf.setIndex(2, 4);
+&lt;/pre&gt;
+@throws IndexOutOfBoundsException
+if the specified {@code readerIndex} is less than 0,
+if the specified {@code writerIndex} is less than the specified
+{@code readerIndex} or if the specified {@code writerIndex} is
+greater than {@code capacity}</p>
+                    
+                </div>
+            </section>
+            
+
+            <!-- Specification -->
+
+            
+
+            <!-- Directed Relationship -->
+
+            
+
+            <!-- Undirected Relationship -->
+
+            
+
+            <!-- Classifier -->
+
+            
+
+            <!-- Interface -->
+
+            
+
+            <!-- Component -->
+
+            
+
+            <!-- Node -->
+
+            
+
+            <!-- Actor -->
+
+            
+
+            <!-- Use Case -->
+
+            
+
+            <!-- Template Parameters -->
+
+            
+
+            <!-- Literals -->
+
+            
+
+            <!-- Attributes -->
+
+            
+
+            <!-- Operations -->
+
+            
+
+            <!-- Receptions -->
+
+            
+
+            <!-- Extension Points -->
+
+            
+
+            <!-- Parameters -->
+
+            
+            <section>
+                <h3>Parameters</h3>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>Direction</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>in</td>
+                        <td><a href="88ebae26f6ad2667b37eb85e78b2b0f7.html">readerIndex</a></td>
+                        <td>int</td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>in</td>
+                        <td><a href="7706e8d577bf307d99ea7f0af0eca66e.html">writerIndex</a></td>
+                        <td>int</td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>return</td>
+                        <td><a href="8d4cdb026ac02debc693988401c5108a.html">(unnamed)</a></td>
+                        <td>void</td>
+                        <td></td>
+                    </tr>
+                    
+                </table>
+            </section>
+            
+
+            <!-- Diagrams -->
+
+            
+            
+
+            <!-- Behavior -->
+
+            
+
+            <!-- Action -->
+
+            
+
+            <!-- Interaction -->
+
+            
+
+            <!-- CombinedFragment -->
+
+            
+
+            <!-- Activity -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State -->
+
+            
+
+            <!-- Vertex -->
+
+            
+
+            <!-- Transition -->
+
+            
+
+            <!-- Properties -->
+
+            <section>
+                <h3>Properties</h3>
+                
+                <table class="table table-striped table-bordered">
+    <tr>
+        <th width="50%">Name</th>
+        <th width="50%">Value</th>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>name</td>
+        <td>setIndex</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>stereotype</td>
+        <td><span class='label label-info'>null</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>visibility</td>
+        <td>package</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>isStatic</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isLeaf</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>parameters</td>
+        <td>
+            
+            
+            <a href='88ebae26f6ad2667b37eb85e78b2b0f7.html'><span class='node-icon _icon-UMLParameter'></span>readerIndex</a>
+            
+            <span>, </span>
+            <a href='7706e8d577bf307d99ea7f0af0eca66e.html'><span class='node-icon _icon-UMLParameter'></span>writerIndex</a>
+            
+            <span>, </span>
+            <a href='8d4cdb026ac02debc693988401c5108a.html'><span class='node-icon _icon-UMLParameter'></span>(Parameter)</a>
+            
+        </td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>raisedExceptions</td>
+        <td>
+            
+        </td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>concurrency</td>
+        <td>sequential</td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isQuery</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isAbstract</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>specification</td>
+        <td></td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</table>                
+
+            </section>
+
+            <!-- Tags -->
+
+            
+
+            <!-- Constraints, Dependencies, Dependants -->
+
+            
+                
+                
+
+
+                
+                
+
+
+                
+                
+
+            
+
+            <!-- Relationships -->
+
+            
+            
+
+
+            <!-- Owned Elements -->
+
+            
+            
+
+
+        </div>
+    </body>
+</html>

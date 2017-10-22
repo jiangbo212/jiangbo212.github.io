@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>NioClientSocketPipelineSink</title>
+        <!-- <script src="http://use.edgefonts.net/source-sans-pro;source-code-pro.js"></script> -->
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Source+Code+Pro:300,400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../assets/css/jquery.bonsai.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/icons.css">
+<script type="text/javascript" src="../assets/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.bonsai.js"></script>
+<!-- <script type="text/javascript" src="../assets/js/main.js"></script> -->
+
+    </head>
+    <body>
+        <div>
+
+            <!-- Name Title -->
+
+            <h1>NioClientSocketPipelineSink</h1>
+
+            <!-- Type and Stereotype -->
+
+            <section style="margin-top: .5em;">
+                <span class="alert alert-info">
+                    <span class="node-icon _icon-UMLClass"></span>
+                    UMLClass
+                </span>
+                
+            </section>
+
+            <!-- Path -->
+
+            <section style="margin-top: 10px">
+                
+                
+                
+                    
+                    <span class="label label-info"><a href='cf9c8b720f3815adeccaf3ef6e48c6c4.html'><span class='node-icon _icon-Project'></span>Untitled</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='6550300e57d7fc770bd2e9afbcdb3ecb.html'><span class='node-icon _icon-UMLModel'></span>JavaReverse</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7ff2d96ca3eb7f62f48c1a30b3c7c990.html'><span class='node-icon _icon-UMLPackage'></span>net</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7adc4be4f2e4859086f068fc27512d85.html'><span class='node-icon _icon-UMLPackage'></span>gleamynode</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='bb15307bdbbaf31bfef4f71be74150ae.html'><span class='node-icon _icon-UMLPackage'></span>netty</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='392fd228dddcffe2ef252f5663cf31a7.html'><span class='node-icon _icon-UMLPackage'></span>channel</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7ca7d671913790d47415eb9f8fa0fb0e.html'><span class='node-icon _icon-UMLPackage'></span>socket</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='d4743f8a9b4c707304ea22a7a918569f.html'><span class='node-icon _icon-UMLPackage'></span>nio</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='5bc558f1a6e7b9e54d77129815210741.html'><span class='node-icon _icon-UMLClass'></span>NioClientSocketPipelineSink</a></span>
+                
+            </section>
+
+            <!-- Diagram -->
+
+            
+
+            <!-- Description -->
+
+            
+            <section>
+                <h3>Description</h3>
+                <div>
+                    
+                        <p>Copyright (C) 2008  Trustin Heuiseung Lee
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, 5th Floor, Boston, MA 02110-1301 USA</p>
+                    
+                </div>
+            </section>
+            
+
+            <!-- Specification -->
+
+            
+
+            <!-- Directed Relationship -->
+
+            
+
+            <!-- Undirected Relationship -->
+
+            
+
+            <!-- Classifier -->
+
+            
+                
+                
+<section class="element-list">
+    <h3>Generalized Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='6d9658aa7010053468b272f528025f98.html'><span class='node-icon _icon-UMLClass'></span>AbstractChannelSink</a></li>
+        
+    </ul>
+</section>
+
+
+
+                
+                
+
+
+                
+                
+
+
+                
+                
+
+
+                
+                
+
+            
+
+            <!-- Interface -->
+
+            
+
+            <!-- Component -->
+
+            
+
+            <!-- Node -->
+
+            
+
+            <!-- Actor -->
+
+            
+
+            <!-- Use Case -->
+
+            
+
+            <!-- Template Parameters -->
+
+            
+
+            <!-- Literals -->
+
+            
+
+            <!-- Attributes -->
+
+            
+            <section>
+                <h3>Attributes</h3>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>Visibility</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="6f5d097c74918cc009c71d28dad8315e.html">logger</a></td>
+                        <td><a href='1b05ec13be36b04d6615143b3ad1a3dd.html'>Logger</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>private</td>
+                        <td><a href="040a37c0395e323a84b014803cc81de2.html">nextId</a></td>
+                        <td><a href='0971a5d31a9a30345b3f1eae71dbb573.html'>AtomicInteger</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="90ca5564e93c558aae30b3026d6dc84a.html">id</a></td>
+                        <td>int</td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>private</td>
+                        <td><a href="50978f928af6a3f0968adaad422d6346.html">workerIndex</a></td>
+                        <td><a href='0971a5d31a9a30345b3f1eae71dbb573.html'>AtomicInteger</a></td>
+                        <td></td>
+                    </tr>
+                    
+                </table>
+            </section>
+            
+
+            <!-- Operations -->
+
+            
+            <section>
+                <h3>Operations</h3>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>Visibility</th>
+                        <th>Name</th>
+                        <th>Description</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="1dc3945ff45c0fd21b12a3a657a4162a.html">NioClientSocketPipelineSink(bossExecutor: Executor, workerExecutor: Executor, workerCount: int)</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="810fba82a7c5a43fe72ce868408e00bf.html">eventSunk(pipeline: ChannelPipeline, e: ChannelEvent): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>private</td>
+                        <td><a href="73d76b9eea46c5ce137d3dab7b67dbac.html">bind(channel: NioClientSocketChannel, future: ChannelFuture, localAddress: SocketAddress): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>private</td>
+                        <td><a href="2b2fdca398d24c6d2e363b7e0db9e5e7.html">connect(channel: NioClientSocketChannel, future: ChannelFuture, remoteAddress: SocketAddress): void</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>package</td>
+                        <td><a href="52de2cae44df70950e156761cab202f5.html">nextWorker(): NioWorker</a></td>
+                        <td></td>
+                    </tr>
+                    
+                </table>
+            </section>
+            
+
+            <!-- Receptions -->
+
+            
+
+            <!-- Extension Points -->
+
+            
+
+            <!-- Parameters -->
+
+            
+
+            <!-- Diagrams -->
+
+            
+            
+
+            <!-- Behavior -->
+
+            
+
+            <!-- Action -->
+
+            
+
+            <!-- Interaction -->
+
+            
+
+            <!-- CombinedFragment -->
+
+            
+
+            <!-- Activity -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State -->
+
+            
+
+            <!-- Vertex -->
+
+            
+
+            <!-- Transition -->
+
+            
+
+            <!-- Properties -->
+
+            <section>
+                <h3>Properties</h3>
+                
+                <table class="table table-striped table-bordered">
+    <tr>
+        <th width="50%">Name</th>
+        <th width="50%">Value</th>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>name</td>
+        <td>NioClientSocketPipelineSink</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>stereotype</td>
+        <td><span class='label label-info'>null</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>visibility</td>
+        <td>package</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>isAbstract</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isFinalSpecialization</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isLeaf</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isActive</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+</table>                
+
+            </section>
+
+            <!-- Tags -->
+
+            
+
+            <!-- Constraints, Dependencies, Dependants -->
+
+            
+                
+                
+
+
+                
+                
+
+
+                
+                
+
+            
+
+            <!-- Relationships -->
+
+            
+            
+<section class="element-list">
+    <h3>Relationships</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='ae6f46aac14c04df7950866197d919c3.html'><span class='node-icon _icon-UMLGeneralization'></span>(NioClientSocketPipelineSink→AbstractChannelSink)</a></li>
+        
+        <li><a href='404eb83f67c6d433a079a9db3621e76d.html'><span class='node-icon _icon-UMLAssociation'></span>(NioClientSocketPipelineSink—Executor)</a></li>
+        
+        <li><a href='ba2128630c16ea1617617309ca21524e.html'><span class='node-icon _icon-UMLAssociation'></span>(NioClientSocketPipelineSink—Boss)</a></li>
+        
+        <li><a href='d5b1f7330275e5586a3667342f0a4607.html'><span class='node-icon _icon-UMLAssociation'></span>(NioClientSocketPipelineSink—NioWorker)</a></li>
+        
+    </ul>
+</section>
+
+
+
+            <!-- Owned Elements -->
+
+            
+            
+<section class="element-list">
+    <h3>Owned Elements</h3>
+    <ul class="nav nav-list">
+        
+        <li><a href='2c5cb23a56129a377582fba25303c72c.html'><span class='node-icon _icon-UMLClass'></span>Boss</a></li>
+        
+        <li><a href='ae6f46aac14c04df7950866197d919c3.html'><span class='node-icon _icon-UMLGeneralization'></span>(NioClientSocketPipelineSink→AbstractChannelSink)</a></li>
+        
+        <li><a href='404eb83f67c6d433a079a9db3621e76d.html'><span class='node-icon _icon-UMLAssociation'></span>(NioClientSocketPipelineSink—Executor)</a></li>
+        
+        <li><a href='ba2128630c16ea1617617309ca21524e.html'><span class='node-icon _icon-UMLAssociation'></span>(NioClientSocketPipelineSink—Boss)</a></li>
+        
+        <li><a href='d5b1f7330275e5586a3667342f0a4607.html'><span class='node-icon _icon-UMLAssociation'></span>(NioClientSocketPipelineSink—NioWorker)</a></li>
+        
+    </ul>
+</section>
+
+
+
+        </div>
+    </body>
+</html>

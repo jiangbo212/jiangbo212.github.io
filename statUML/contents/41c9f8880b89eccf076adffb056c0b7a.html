@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>ChannelBuffers</title>
+        <!-- <script src="http://use.edgefonts.net/source-sans-pro;source-code-pro.js"></script> -->
+<link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,300italic,400italic,700italic|Source+Code+Pro:300,400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="../assets/css/bootstrap.css">
+<link rel="stylesheet" href="../assets/css/jquery.bonsai.css">
+<link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/icons.css">
+<script type="text/javascript" src="../assets/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" src="../assets/js/bootstrap.js"></script>
+<script type="text/javascript" src="../assets/js/jquery.bonsai.js"></script>
+<!-- <script type="text/javascript" src="../assets/js/main.js"></script> -->
+
+    </head>
+    <body>
+        <div>
+
+            <!-- Name Title -->
+
+            <h1>ChannelBuffers</h1>
+
+            <!-- Type and Stereotype -->
+
+            <section style="margin-top: .5em;">
+                <span class="alert alert-info">
+                    <span class="node-icon _icon-UMLClass"></span>
+                    UMLClass
+                </span>
+                
+            </section>
+
+            <!-- Path -->
+
+            <section style="margin-top: 10px">
+                
+                
+                
+                    
+                    <span class="label label-info"><a href='cf9c8b720f3815adeccaf3ef6e48c6c4.html'><span class='node-icon _icon-Project'></span>Untitled</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='6550300e57d7fc770bd2e9afbcdb3ecb.html'><span class='node-icon _icon-UMLModel'></span>JavaReverse</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7ff2d96ca3eb7f62f48c1a30b3c7c990.html'><span class='node-icon _icon-UMLPackage'></span>net</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='7adc4be4f2e4859086f068fc27512d85.html'><span class='node-icon _icon-UMLPackage'></span>gleamynode</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='bb15307bdbbaf31bfef4f71be74150ae.html'><span class='node-icon _icon-UMLPackage'></span>netty</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='13ebeea6c90c35d72f303d2d478d584e.html'><span class='node-icon _icon-UMLPackage'></span>buffer</a></span>
+                
+                    <span>::</span>
+                    <span class="label label-info"><a href='41c9f8880b89eccf076adffb056c0b7a.html'><span class='node-icon _icon-UMLClass'></span>ChannelBuffers</a></span>
+                
+            </section>
+
+            <!-- Diagram -->
+
+            
+
+            <!-- Description -->
+
+            
+            <section>
+                <h3>Description</h3>
+                <div>
+                    
+                        <p>Copyright (C) 2008  Trustin Heuiseung Lee
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, 5th Floor, Boston, MA 02110-1301 USA
+Simplistic &lt;em&gt;internal-use-only&lt;/em&gt; logging layer which allows a user to
+decide what logging framework Netty should use to log its own messages.
+Copyright (C) 2008  Trustin Heuiseung Lee
+This library is free software; you can redistribute it and/or
+modify it under the terms of the GNU Lesser General Public
+License as published by the Free Software Foundation; either
+version 2.1 of the License, or (at your option) any later version.
+This library is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+Lesser General Public License for more details.
+You should have received a copy of the GNU Lesser General Public
+License along with this library; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, 5th Floor, Boston, MA 02110-1301 USA
+Creates a new {@link ChannelBuffer} by allocating new space or by wrapping
+or copying existing byte arrays.
+&lt;h3&gt;Use static import&lt;/h3&gt;
+This classes is intended to be used with Java 5 static import statement:
+&lt;pre&gt;
+import static net.gleamynode.netty.buffer.ChannelBuffers.
+;
+ChannelBuffer heapBuffer = buffer(128);
+ChannelBuffer directBuffer = directBuffer(256);
+ChannelBuffer dynamicBuffer = dynamicBuffer(512);
+ChannelBuffer wrappedBuffer = wrappedBuffer(new byte[128], new byte[256]);
+ChannelBuffer copiedBuffer = copiedBuffer(ByteBuffer.allocate(128));
+&lt;/pre&gt;
+&lt;h3&gt;Allocating a new buffer&lt;/h3&gt;
+Three buffer types are provided out of the box.
+&lt;ul&gt;
+&lt;li&gt;{@link #buffer(int)} allocates a new fixed-capacity heap buffer.&lt;/li&gt;
+&lt;li&gt;{@link #directBuffer(int)} allocates a new fixed-capacity direct buffer.&lt;/li&gt;
+&lt;li&gt;{@link #dynamicBuffer(int)} allocates a new dynamic-capacity heap
+buffer, whose capacity increases automatically as needed by a write
+operation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Creating a wrapped buffer&lt;/h3&gt;
+Wrapped buffer is a buffer which is a view of one or more existing
+byte arrays or byte buffer.  Any changes in the content of the original
+array or buffer will be reflected in the wrapped buffer.  Various wrapper
+methods are provided and their name is all {@code wrappedBuffer()}.
+You might want to take a look at this method closely if you want to create
+a buffer which is composed of more than one array to reduce the number of
+memory copy.
+&lt;h3&gt;Creating a copied buffer&lt;/h3&gt;
+Copied buffer is a deep copy of one or more existing byte arrays or byte
+buffer.  Unlike a wrapped buffer, there&#39;s no shared data between the
+original arrays and the copied buffer.  Various copy methods are provided
+and their name is all {@code copiedBuffer()}.  It&#39;s also convenient to
+use this operation to merge multiple buffers into one buffer.
+&lt;h3&gt;Miscellaneous utility methods&lt;/h3&gt;
+This class also provides various utility methods to help implementation
+of a new buffer type, generation of hex dump and swapping an integer&#39;s
+byte order.
+@author The Netty Project (netty@googlegroups.com)
+@author Trustin Lee (trustin@gmail.com)
+@version $Rev$, $Date$
+@apiviz.landmark
+@apiviz.has net.gleamynode.netty.buffer.ChannelBuffer oneway - - creates</p>
+                    
+                </div>
+            </section>
+            
+
+            <!-- Specification -->
+
+            
+
+            <!-- Directed Relationship -->
+
+            
+
+            <!-- Undirected Relationship -->
+
+            
+
+            <!-- Classifier -->
+
+            
+                
+                
+
+
+                
+                
+
+
+                
+                
+
+
+                
+                
+
+
+                
+                
+
+            
+
+            <!-- Interface -->
+
+            
+
+            <!-- Component -->
+
+            
+
+            <!-- Node -->
+
+            
+
+            <!-- Actor -->
+
+            
+
+            <!-- Use Case -->
+
+            
+
+            <!-- Template Parameters -->
+
+            
+
+            <!-- Literals -->
+
+            
+
+            <!-- Attributes -->
+
+            
+            <section>
+                <h3>Attributes</h3>
+                <table class="table table-striped table-bordered">
+                    <tr>
+                        <th>Visibility</th>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="a04231dd890fc85436463f5e0b643ee8.html">BIG_ENDIAN</a></td>
+                        <td><a href='0768af0d8a8eb07f49b6c9379e8706dc.html'>ByteOrder</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>public</td>
+                        <td><a href="04eec124ce5667732a2cf81d5a883aa1.html">LITTLE_ENDIAN</a></td>
+                        <td><a href='0768af0d8a8eb07f49b6c9379e8706dc.html'>ByteOrder</a></td>
+                        <td></td>
+                    </tr>
+                    
+                    <tr>
+                        <td>private</td>
+                        <td><a href="a6207c0972b8fdc6e3c66f7e58bbe602.html">HEXDUMP_TABLE</a></td>
+                        <td>char</td>
+                        <td></td>
+                    </tr>
+                    
+                </table>
+            </section>
+            
+
+            <!-- Operations -->
+
+            
+
+            <!-- Receptions -->
+
+            
+
+            <!-- Extension Points -->
+
+            
+
+            <!-- Parameters -->
+
+            
+
+            <!-- Diagrams -->
+
+            
+            
+
+            <!-- Behavior -->
+
+            
+
+            <!-- Action -->
+
+            
+
+            <!-- Interaction -->
+
+            
+
+            <!-- CombinedFragment -->
+
+            
+
+            <!-- Activity -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State Machine -->
+
+            
+
+            <!-- State -->
+
+            
+
+            <!-- Vertex -->
+
+            
+
+            <!-- Transition -->
+
+            
+
+            <!-- Properties -->
+
+            <section>
+                <h3>Properties</h3>
+                
+                <table class="table table-striped table-bordered">
+    <tr>
+        <th width="50%">Name</th>
+        <th width="50%">Value</th>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>name</td>
+        <td>ChannelBuffers</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>stereotype</td>
+        <td><span class='label label-info'>null</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>visibility</td>
+        <td>public</td>
+    </tr>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <tr>
+        <td>isAbstract</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isFinalSpecialization</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isLeaf</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+    
+    
+    <tr>
+        <td>isActive</td>
+        <td><span class='label label-info'>false</span></td>
+    </tr>
+    
+    
+    
+</table>                
+
+            </section>
+
+            <!-- Tags -->
+
+            
+
+            <!-- Constraints, Dependencies, Dependants -->
+
+            
+                
+                
+
+
+                
+                
+
+
+                
+                
+
+            
+
+            <!-- Relationships -->
+
+            
+            
+
+
+            <!-- Owned Elements -->
+
+            
+            
+
+
+        </div>
+    </body>
+</html>
